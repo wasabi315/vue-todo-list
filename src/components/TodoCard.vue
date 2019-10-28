@@ -31,7 +31,7 @@
         </v-col>
         <v-spacer></v-spacer>
         <v-col sm="0.5">
-          <v-btn color="green accent-3">
+          <v-btn color="green accent-3" @click="$emit('todo-complete')">
             <v-icon class="mr-1">mdi-check</v-icon>Done
           </v-btn>
         </v-col>
