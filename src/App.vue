@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app elevation="0" color="transparent">
       <v-toolbar-title class="headline text-capitalize font-weight-bold">
-        Todo Manager
+        Todo Mgr<span class="grey--text text--lighten-1">.</span>
       </v-toolbar-title>
     </v-app-bar>
     <v-content>

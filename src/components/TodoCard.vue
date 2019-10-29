@@ -5,27 +5,27 @@
         <v-col sm="0.5">
           <span
             v-if="entry.priority === 'low'"
-            class="light-green--text text--darken-1 font-weight-bold"
+            class="cyan--text text--darken-1 font-weight-bold"
           >
             !
           </span>
           <span
             v-if="entry.priority === 'medium'"
-            class="amber--text text--darken-3 font-weight-bold"
+            class="cyan--text text--darken-1 font-weight-bold"
           >
             !!
           </span>
           <span
             v-if="entry.priority === 'high'"
-            class="red--text text--lighten-1 font-weight-bold"
+            class="cyan--text text--darken-1 font-weight-bold"
           >
             !!!
           </span>
         </v-col>
         <v-col sm="10">
           <v-card-title>{{ entry.title }}</v-card-title>
-          <v-card-subtitle>{{ formatedDue }}</v-card-subtitle>
-          <v-card-text v-if="entry.notes.length" class="pb-5 px-4">
+          <v-card-subtitle v-if="entry.due">{{ formatedDue }}</v-card-subtitle>
+          <v-card-text v-if="entry.notes" class="pb-5 px-4">
             {{ entry.notes }}
           </v-card-text>
         </v-col>
