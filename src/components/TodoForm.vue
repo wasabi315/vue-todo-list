@@ -9,13 +9,13 @@
       </v-card-title>
       <v-card-text>
         <v-container>
-          <v-form>
+          <v-form ref="form">
             <v-text-field label="title" v-model="title" required></v-text-field>
             <v-text-field label="due" v-model="due"></v-text-field>
             <v-select
               :items="['low', 'medium', 'high']"
-              v-model="priority"
               label="priority"
+              v-model="priority"
             ></v-select>
             <v-textarea label="notes" v-model="notes"></v-textarea>
           </v-form>
@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Component, Emit } from "vue-property-decorator";
+import { Component, Emit, Watch } from "vue-property-decorator";
 
 @Component
 export default class TodoForm extends Vue {
@@ -51,11 +51,16 @@ export default class TodoForm extends Vue {
   onSubmit(): TodoEntry {
     this.visible = false;
     return {
-      title: this.title || "",
+      title: this.title || "Your new todo",
       due: this.due,
       priority: this.priority,
       notes: this.notes
     };
+  }
+
+  @Watch("visible")
+  onVisibilityChanged(n: boolean, _: boolean): void {
+    if (!n) this.$refs.form.reset();
   }
 }
 </script>
