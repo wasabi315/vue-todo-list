@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="visible" max-width="800px">
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on">+ Add Todo</v-btn>
+      <v-btn v-on="on" @click="$refs.form.reset()">+ Add Todo</v-btn>
     </template>
     <v-card class="pa-8">
       <v-card-title>
@@ -56,15 +56,6 @@ export default class TodoForm extends Vue {
       priority: this.priority,
       notes: this.notes
     };
-  }
-
-  @Watch("visible")
-  onVisibilityChanged(n: boolean, _: boolean): void {
-    if (!n) {
-      // TODO: better definition
-      const formRef: any = this.$refs.form;
-      formRef.reset();
-    }
   }
 }
 </script>
