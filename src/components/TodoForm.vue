@@ -60,7 +60,11 @@ export default class TodoForm extends Vue {
 
   @Watch("visible")
   onVisibilityChanged(n: boolean, _: boolean): void {
-    if (!n) this.$refs.form.reset();
+    if (!n) {
+      // TODO: better definition
+      const formRef: any = this.$refs.form;
+      formRef.reset();
+    }
   }
 }
 </script>
