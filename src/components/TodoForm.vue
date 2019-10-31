@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="visible" max-width="800px">
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on" @click="$refs.form.reset()">+ Add Todo</v-btn>
+      <v-btn v-on="on" @click="resetForm()">+ Add Todo</v-btn>
     </template>
     <v-card class="pa-8">
       <v-card-title>
@@ -42,10 +42,11 @@ import { Component, Emit, Watch } from "vue-property-decorator";
 export default class TodoForm extends Vue {
   visible: boolean = false;
 
-  title?: string;
-  due?: Date;
-  priority?: TodoPriority;
-  notes?: string;
+  title?: string = "";
+  due?: string = "";
+  priority?: TodoPriority = null;
+  notes?: string = "";
+  on?: boolean = false;
 
   @Emit("submit")
   onSubmit(): TodoEntry {
@@ -56,6 +57,13 @@ export default class TodoForm extends Vue {
       priority: this.priority,
       notes: this.notes
     };
+  }
+
+  resetForm(): void {
+    if (this.$refs.form) {
+      const formRef: any = this.$refs.form;
+      formRef.reset();
+    }
   }
 }
 </script>
