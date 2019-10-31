@@ -61,9 +61,11 @@ export default class TodoForm extends Vue {
 
   resetForm(): void {
     if (this.$refs.form) {
-      const formRef: any = this.$refs.form;
-      formRef.reset();
+      this.form.reset();
     }
+  }
+  get form(): Vue & { reset: () => void } {
+    return this.$refs.form as Vue & { reset: () => void };
   }
 }
 </script>
