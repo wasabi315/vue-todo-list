@@ -1,8 +1,8 @@
-declare type TodoPriority = "low" | "medium" | "high";
+declare type TodoPriority = null | "low" | "medium" | "high";
 
 declare interface TodoEntry {
   title: string;
-  due?: Date;
+  due?: string;
   priority?: TodoPriority;
   notes?: string;
 }
